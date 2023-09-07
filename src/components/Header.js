@@ -1,7 +1,15 @@
-import React from "react";
+import React,{useState} from "react";
 import Search from "./Search";
 
-function Header() {
+function Header({onSearchChange}) {
+  
+  const [searchTexByName,setSearchTextByName]=useState("")
+  
+  const handleSeacrhName = (someTextControlled)=>{
+    setSearchTextByName (someTextControlled)
+    onSearchChange(searchTexByName)
+  }
+  
   return (
     <header>
       <h1>
@@ -10,7 +18,7 @@ function Header() {
         </span>
         gregslist
       </h1>
-      <Search />
+      <Search onSearchChange={handleSeacrhName}/>
     </header>
   );
 }
